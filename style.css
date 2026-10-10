@@ -33,10 +33,48 @@ html {
 
 body {
   font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
-  background: var(--bg);
+  background: #0a0b0f;
   color: var(--text);
   line-height: 1.7;
   overflow-x: hidden;
+}
+
+/* ===== LATAR BERTEMA KEBAKARAN HUTAN ===== */
+/* Lapisan tetap (fixed) di belakang seluruh konten: bara api di bawah,
+   asap gelap di atas, dengan siluet pepohonan di garis bawah. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(120% 80% at 50% 115%, rgba(255, 106, 43, 0.35), transparent 60%),
+    radial-gradient(90% 60% at 85% 100%, rgba(255, 157, 61, 0.25), transparent 55%),
+    radial-gradient(80% 55% at 10% 100%, rgba(255, 90, 90, 0.22), transparent 55%),
+    linear-gradient(180deg, #0a0b0f 0%, #140d0a 55%, #1f1109 100%);
+}
+/* Lapisan bara/percikan + siluet hutan yang bergerak halus */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(2px 2px at 15% 85%, rgba(255, 207, 77, 0.55), transparent),
+    radial-gradient(2px 2px at 35% 70%, rgba(255, 106, 43, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 55% 90%, rgba(255, 157, 61, 0.55), transparent),
+    radial-gradient(2px 2px at 75% 75%, rgba(255, 207, 77, 0.5), transparent),
+    radial-gradient(1.5px 1.5px at 90% 88%, rgba(255, 106, 43, 0.5), transparent),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='180' viewBox='0 0 1200 180'%3E%3Cpath fill='%23060708' d='M0 180V95l40 18 25-30 20 22 30-45 22 30 28-20 25 35 30-55 24 40 30-28 26 33 28-48 24 42 30-30 26 36 30-52 22 40 28-26 26 34 30-46 24 40 30-28 26 34 28-50 24 44 30-32 26 38 30-54 22 42 28-28 26 36 30-48 24 42 30-30 26 36 28-50 24 44 30-34 26 40 20 10V180Z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat-x;
+  background-position: 0 0, 0 0, 0 0, 0 0, 0 0, bottom center;
+  background-size: auto, auto, auto, auto, auto, 1200px 180px;
+  animation: emberGlow 6s ease-in-out infinite alternate;
+}
+@keyframes emberGlow {
+  from { opacity: 0.75; }
+  to { opacity: 1; }
 }
 
 .container {
@@ -148,9 +186,9 @@ h1, h2, h3, h4 {
   align-items: center;
   padding-top: 68px;
   background:
-    radial-gradient(1000px 500px at 80% -10%, rgba(255, 157, 61, 0.25), transparent 60%),
-    radial-gradient(800px 500px at 0% 100%, rgba(255, 106, 43, 0.2), transparent 55%),
-    linear-gradient(180deg, #140d0a, #0f1115 70%);
+    radial-gradient(1000px 500px at 80% -10%, rgba(255, 157, 61, 0.3), transparent 60%),
+    radial-gradient(800px 500px at 0% 100%, rgba(255, 106, 43, 0.28), transparent 55%),
+    linear-gradient(180deg, #140d0a 0%, rgba(15, 17, 21, 0.4) 70%, transparent 100%);
   overflow: hidden;
 }
 .hero-overlay {
@@ -281,7 +319,8 @@ h1, h2, h3, h4 {
   padding-block: clamp(60px, 9vw, 110px);
 }
 .section-alt {
-  background: var(--surface);
+  background: rgba(23, 26, 33, 0.72);
+  backdrop-filter: blur(2px);
 }
 .section-head {
   text-align: center;
@@ -464,14 +503,15 @@ h1, h2, h3, h4 {
 .biodiv-photo {
   position: relative;
   width: 100%;
-  height: 180px;
+  height: 200px;
   overflow: hidden;
-  background: var(--bg);
+  background: #0b0d11;
 }
 .biodiv-photo img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 0.5s var(--ease);
 }
 .biodiv-card:hover .biodiv-photo img { transform: scale(1.08); }
@@ -952,6 +992,10 @@ h1, h2, h3, h4 {
   .cause-wrap,
   .two-col { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr; }
+
+  /* Flora & fauna: 2 kolom di tablet, foto lebih tinggi */
+  .biodiv-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .biodiv-photo { height: 190px; }
 }
 
 @media (max-width: 520px) {
@@ -969,6 +1013,15 @@ h1, h2, h3, h4 {
   #chartNasional .bar-val { font-size: 0.55rem; }
   #chartNasional .bar-year { font-size: 0.6rem; }
   .footer-inner { flex-direction: column; }
+
+  /* Flora & fauna di HP: 1 kolom, foto utuh tidak terpotong */
+  .biodiv-grid { grid-template-columns: 1fr; gap: 16px; }
+  .biodiv-photo {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    background: #0b0d11;
+  }
+  .biodiv-photo img { object-fit: contain; }
 }
 
 /* ===== AKSESIBILITAS ===== */
