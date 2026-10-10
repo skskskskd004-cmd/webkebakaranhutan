@@ -36,10 +36,11 @@
         <a href="#dampak">Dampak</a>
         <a href="#flora-fauna">Flora &amp; Fauna</a>
         <a href="#data">Data</a>
-        <a href="#sejarah">Sejarah</a>
+        <a href="#hotspot">Hotspot</a>
         <a href="#galeri">Galeri</a>
         <a href="#upaya">Pencegahan</a>
-        <a href="#mitos">Mitos</a>
+        <a href="#berita">Berita</a>
+        <a href="#reboisasi">Reboisasi</a>
         <a href="#kuis">Kuis</a>
         <a href="#tanya">Tanya AI</a>
         <button class="nav-share" id="shareBtn" type="button" aria-label="Bagikan halaman">🔗 Bagikan</button>
@@ -681,11 +682,193 @@
       </div>
     </section>
 
-    <!-- ===== KESIMPULAN ===== -->
-    <section class="section" id="kesimpulan">
+    <!-- ===== BERITA TERBARU ===== -->
+    <section class="section" id="berita">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">09 — Penutup</span>
+          <span class="eyebrow">09 — Kabar Terkini</span>
+          <h2>Berita &amp; Informasi Terbaru</h2>
+          <p class="section-lead">
+            Kumpulan berita kebakaran hutan dari sumber tepercaya. Klik judul
+            untuk membaca di sumber aslinya.
+          </p>
+        </div>
+
+        <div class="news-grid reveal">
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="news-source">Okezone</span>
+              <time datetime="2026-09-05">5 September 2026</time>
+            </div>
+            <h4>
+              <a href="https://www.okezone.com/tag/karhutla/80" target="_blank" rel="noopener">
+                Padamkan Karhutla, BMKG Gencarkan Operasi Modifikasi Cuaca di Kalbar
+              </a>
+            </h4>
+            <p>BMKG mengoptimalkan analisis cuaca dan pemantauan atmosfer untuk mendukung Operasi Modifikasi Cuaca dalam penanganan karhutla di Kalimantan Barat.</p>
+            <a class="news-link" href="https://www.okezone.com/tag/karhutla/80" target="_blank" rel="noopener">Baca selengkapnya ↗</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="news-source">VOI</span>
+              <time datetime="2026-08-25">25 Agustus 2026</time>
+            </div>
+            <h4>
+              <a href="https://voi.id/en/news/591127" target="_blank" rel="noopener">
+                BMKG Deteksi 473 Titik Panas di Kalimantan Selatan
+              </a>
+            </h4>
+            <p>BMKG mendeteksi 473 titik panas yang tersebar di 11 kabupaten/kota di Kalimantan Selatan, terbanyak di Hulu Sungai Selatan, Tapin, dan Banjar.</p>
+            <a class="news-link" href="https://voi.id/en/news/591127" target="_blank" rel="noopener">Baca selengkapnya ↗</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="news-source">BMKG Stasiun Klimatologi Kalsel</span>
+              <time datetime="2026-09-09">9 September 2026</time>
+            </div>
+            <h4>
+              <a href="https://staklim-kalsel.bmkg.go.id/" target="_blank" rel="noopener">
+                Prospek Cuaca Kalsel 9–15 September 2026: Waspada Potensi Karhutla
+              </a>
+            </h4>
+            <p>BMKG mengingatkan potensi kebakaran hutan dan lahan di Kalimantan Selatan seiring prakiraan cuaca kering sepekan ke depan.</p>
+            <a class="news-link" href="https://staklim-kalsel.bmkg.go.id/" target="_blank" rel="noopener">Baca selengkapnya ↗</a>
+          </article>
+
+          <article class="news-card">
+            <div class="news-meta">
+              <span class="news-source">VOI</span>
+              <time datetime="2026-03-05">5 Maret 2026</time>
+            </div>
+            <h4>
+              <a href="https://voi.id/en/news/563023" target="_blank" rel="noopener">
+                Kemenhut Intensifkan Pemadaman Karhutla di Kalimantan Barat
+              </a>
+            </h4>
+            <p>Kementerian Kehutanan mengintensifkan upaya pemadaman karhutla di beberapa wilayah Kalimantan Barat, termasuk Kabupaten Kubu Raya.</p>
+            <a class="news-link" href="https://voi.id/en/news/563023" target="_blank" rel="noopener">Baca selengkapnya ↗</a>
+          </article>
+        </div>
+        <p class="muted small" style="text-align:center;margin-top:16px">
+          Sumber berita: Okezone, VOI, dan BMKG. Tanggal sesuai publikasi di sumber asli.
+          Untuk kabar paling baru, kunjungi langsung situs resmi BMKG dan KLHK.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== PETA HOTSPOT ===== -->
+    <section class="section section-alt" id="hotspot">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">10 — Titik Panas</span>
+          <h2>Peta Hotspot Kalimantan</h2>
+          <p class="section-lead">
+            Ilustrasi sebaran titik panas (<em>hotspot</em>) di Kalimantan.
+            Arahkan kursor atau ketuk titik untuk melihat keterangannya.
+          </p>
+        </div>
+
+        <div class="hotspot-wrap reveal">
+          <div class="hotspot-map" id="hotspotMap">
+            <!-- Peta dasar Kalimantan + titik panas digambar oleh JS -->
+          </div>
+          <div class="hotspot-legend">
+            <span><span class="hs-dot hs-low"></span> Kepercayaan rendah</span>
+            <span><span class="hs-dot hs-mid"></span> Sedang</span>
+            <span><span class="hs-dot hs-high"></span> Tinggi</span>
+          </div>
+          <div class="hotspot-tip" id="hotspotTip" hidden></div>
+        </div>
+
+        <div class="hotspot-sources reveal">
+          <p class="muted small">
+            <strong>Sumber data resmi (klik untuk data real-time):</strong>
+          </p>
+          <div class="source-btns">
+            <a class="chip" href="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@113.9,-1.5,6z" target="_blank" rel="noopener">🛰️ NASA FIRMS</a>
+            <a class="chip" href="https://www.bmkg.go.id/" target="_blank" rel="noopener">🌦️ BMKG</a>
+            <a class="chip" href="https://sipongi.menlhk.go.id/" target="_blank" rel="noopener">🌲 SiPongi KLHK</a>
+          </div>
+          <p class="muted small" style="margin-top:14px">
+            ⚠️ Catatan: titik panas satelit merupakan <strong>indikasi potensi</strong>
+            kebakaran, bukan bukti bahwa setiap titik pasti kebakaran aktif. Titik di
+            peta ini bersifat ilustratif untuk edukasi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROGRAM REBOISASI ===== -->
+    <section class="section" id="reboisasi">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">11 — Pemulihan</span>
+          <h2>Program Reboisasi &amp; Rehabilitasi Hutan</h2>
+          <p class="section-lead">
+            Setelah kebakaran, hutan dipulihkan lewat penanaman pohon dan restorasi
+            gambut. Berikut gambaran kegiatannya.
+          </p>
+        </div>
+
+        <div class="rebo-stats reveal">
+          <div class="rebo-stat">
+            <span class="rebo-num" data-target="2000000" data-suffix="+">0</span>
+            <span class="rebo-label">Hektar gambut ditargetkan direstorasi (BRG, 8 provinsi)</span>
+          </div>
+          <div class="rebo-stat">
+            <span class="rebo-num" data-target="5" data-suffix=" Provinsi">0</span>
+            <span class="rebo-label">Wilayah restorasi mencakup Kalimantan</span>
+          </div>
+          <div class="rebo-stat">
+            <span class="rebo-num" data-target="1200000" data-suffix="+">0</span>
+            <span class="rebo-label">Perkiraan bibit pohon ditanam (ilustratif)</span>
+          </div>
+        </div>
+
+        <div class="rebo-grid reveal">
+          <article class="rebo-card">
+            <span class="rebo-icon">🌱</span>
+            <h4>Penanaman Pohon</h4>
+            <p>Bibit pohon lokal seperti meranti, jelutung, dan belangeran ditanam kembali di lahan bekas terbakar.</p>
+          </article>
+          <article class="rebo-card">
+            <span class="rebo-icon">💧</span>
+            <h4>Pembasahan Gambut</h4>
+            <p>Pembuatan sekat kanal dan sumur bor agar lahan gambut tetap basah dan tidak mudah terbakar lagi.</p>
+          </article>
+          <article class="rebo-card">
+            <span class="rebo-icon">📍</span>
+            <h4>Lokasi Rehabilitasi</h4>
+            <p>Tersebar di Kalimantan Tengah, Barat, dan Selatan — wilayah dengan lahan gambut paling luas.</p>
+          </article>
+          <article class="rebo-card">
+            <span class="rebo-icon">👥</span>
+            <h4>Peran Masyarakat</h4>
+            <p>Warga lokal dilibatkan dalam menanam dan merawat, sekaligus meningkatkan kesejahteraan mereka.</p>
+          </article>
+        </div>
+
+        <div class="rebo-doc reveal">
+          <figure class="rebo-photo">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Hutan_Hujan_Pegunungan_Meratus.jpg?width=800"
+                 alt="Hutan hijau yang pulih di Kalimantan" loading="lazy" width="800" height="369" />
+            <figcaption>Hutan hijau yang menjadi tujuan pemulihan — dokumentasi kegiatan rehabilitasi.</figcaption>
+          </figure>
+        </div>
+        <p class="muted small" style="text-align:center;margin-top:14px">
+          Sumber program: Badan Restorasi Gambut (BRG/BRGM) &amp; KLHK. Angka target restorasi
+          mengacu mandat BRG; jumlah bibit bersifat ilustratif untuk edukasi.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== KESIMPULAN ===== -->
+    <section class="section section-alt" id="kesimpulan">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">12 — Penutup</span>
           <h2>Kesimpulan</h2>
         </div>
         <div class="card conclusion reveal">
@@ -712,7 +895,7 @@
     <section class="section" id="simulasi">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">10 — Simulasi</span>
+          <span class="eyebrow">13 — Simulasi</span>
           <h2>Simulasi Tingkat Risiko Kebakaran</h2>
           <p class="section-lead">
             Geser pengaturan di bawah untuk melihat bagaimana cuaca memengaruhi
@@ -759,7 +942,7 @@
     <section class="section section-alt" id="glosarium">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">11 — Kamus Istilah</span>
+          <span class="eyebrow">14 — Kamus Istilah</span>
           <h2>Glosarium</h2>
           <p class="section-lead">
             Istilah penting seputar kebakaran hutan. Klik untuk membuka penjelasannya.
@@ -807,7 +990,7 @@
     <section class="section" id="kuis">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">12 — Uji Pemahaman</span>
+          <span class="eyebrow">15 — Uji Pemahaman</span>
           <h2>Kuis Interaktif</h2>
           <p class="section-lead">
             Sudah paham materinya? Yuk uji dengan kuis singkat ini. Pilih jawaban
@@ -843,7 +1026,7 @@
     <section class="section section-alt" id="mitos">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">13 — Luruskan Anggapan</span>
+          <span class="eyebrow">16 — Luruskan Anggapan</span>
           <h2>Mitos vs Fakta</h2>
           <p class="section-lead">
             Banyak anggapan keliru soal kebakaran hutan. Klik tiap kartu untuk
@@ -938,7 +1121,7 @@
     <section class="section" id="tanya">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">14 — Interaktif</span>
+          <span class="eyebrow">17 — Interaktif</span>
           <h2>Tanya Asisten Kebakaran Hutan</h2>
           <p class="section-lead">
             Punya pertanyaan? Pilih salah satu pertanyaan cepat atau ketik

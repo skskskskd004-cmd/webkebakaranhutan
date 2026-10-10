@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
   /* ---------- Hitung angka statistik (counter) ---------- */
-  const statNums = document.querySelectorAll(".stat-num");
+  const statNums = document.querySelectorAll(".stat-num, .rebo-num");
   const animateCount = (el) => {
     const target = Number(el.dataset.target) || 0;
     const suffix = el.dataset.suffix || "";
@@ -169,6 +169,76 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     baRange.addEventListener("input", () => setBA(baRange.value));
     setBA(baRange.value);
+  }
+
+  /* ---------- Peta Hotspot Kalimantan (ilustratif) ---------- */
+  const hotspotMap = document.getElementById("hotspotMap");
+  if (hotspotMap) {
+    const hotspotTip = document.getElementById("hotspotTip");
+    // Siluet Kalimantan (disederhanakan) dalam viewBox 0..100.
+    const borneoPath =
+      "M50 6 L62 10 L70 8 L74 16 L82 20 L86 30 L84 40 L90 48 L86 58 " +
+      "L88 68 L80 74 L76 84 L66 88 L58 86 L50 92 L42 88 L34 90 L28 82 " +
+      "L30 72 L22 66 L20 56 L14 48 L20 40 L18 30 L26 24 L30 16 L40 14 Z";
+    // Titik panas ilustratif: x,y dalam %, level kepercayaan, wilayah.
+    const points = [
+      { x: 44, y: 55, lvl: "high", area: "Kalimantan Tengah" },
+      { x: 50, y: 60, lvl: "high", area: "Kalimantan Tengah" },
+      { x: 38, y: 50, lvl: "mid", area: "Kalimantan Barat" },
+      { x: 33, y: 44, lvl: "mid", area: "Kalimantan Barat" },
+      { x: 58, y: 70, lvl: "high", area: "Kalimantan Selatan" },
+      { x: 62, y: 64, lvl: "mid", area: "Kalimantan Selatan" },
+      { x: 55, y: 40, lvl: "low", area: "Kalimantan Timur" },
+      { x: 64, y: 34, lvl: "low", area: "Kalimantan Timur" },
+      { x: 46, y: 68, lvl: "mid", area: "Kalimantan Tengah" },
+      { x: 40, y: 60, lvl: "low", area: "Kalimantan Tengah" },
+      { x: 52, y: 50, lvl: "high", area: "Kalimantan Tengah" },
+      { x: 36, y: 56, lvl: "low", area: "Kalimantan Barat" },
+    ];
+    const colors = { low: "#ffd54d", mid: "#ff9d3d", high: "#ff4d4d" };
+    const sizes = { low: 1.6, mid: 2.2, high: 2.9 };
+    const labels = { low: "Kepercayaan rendah", mid: "Kepercayaan sedang", high: "Kepercayaan tinggi" };
+
+    const svgNS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(svgNS, "svg");
+    svg.setAttribute("viewBox", "0 0 100 100");
+    svg.setAttribute("preserveAspectRatio", "xMidYMid meet");
+
+    const island = document.createElementNS(svgNS, "path");
+    island.setAttribute("d", borneoPath);
+    island.setAttribute("fill", "#1f5133");
+    island.setAttribute("stroke", "#3ddc84");
+    island.setAttribute("stroke-width", "0.6");
+    island.setAttribute("opacity", "0.9");
+    svg.appendChild(island);
+
+    const showTip = (evt, p) => {
+      const rect = hotspotMap.getBoundingClientRect();
+      const cx = evt.touches ? evt.touches[0].clientX : evt.clientX;
+      const cy = evt.touches ? evt.touches[0].clientY : evt.clientY;
+      hotspotTip.textContent = "🔥 " + p.area + " — " + labels[p.lvl];
+      hotspotTip.style.left = cx - rect.left + "px";
+      hotspotTip.style.top = cy - rect.top + "px";
+      hotspotTip.hidden = false;
+    };
+    const hideTip = () => { hotspotTip.hidden = true; };
+
+    points.forEach((p) => {
+      const c = document.createElementNS(svgNS, "circle");
+      c.setAttribute("cx", p.x);
+      c.setAttribute("cy", p.y);
+      c.setAttribute("r", sizes[p.lvl]);
+      c.setAttribute("fill", colors[p.lvl]);
+      c.setAttribute("class", "hs-point");
+      c.style.animationDelay = (Math.random() * 2).toFixed(2) + "s";
+      c.addEventListener("mousemove", (e) => showTip(e, p));
+      c.addEventListener("mouseleave", hideTip);
+      c.addEventListener("touchstart", (e) => showTip(e, p), { passive: true });
+      c.addEventListener("touchend", hideTip);
+      svg.appendChild(c);
+    });
+
+    hotspotMap.appendChild(svg);
   }
 
   /* ---------- Toast (notifikasi kecil) ---------- */
