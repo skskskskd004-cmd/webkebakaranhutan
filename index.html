@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Website edukasi BMKG tentang kebakaran hutan di Kalimantan untuk pelajar Indonesia. Pelajari pengertian, penyebab, dampak, serta upaya pencegahan dan penanggulangan." />
+  <title>Kebakaran Hutan Kalimantan | Edukasi BMKG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="#beranda" class="brand" aria-label="Beranda">
+        <span class="brand-logo" aria-hidden="true">🔥</span>
+        <span class="brand-text">
+          <strong>BMKG</strong>
+          <small>Edukasi Kebakaran Hutan</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navigasi utama">
+        <a href="#beranda">Beranda</a>
+        <a href="#pengertian">Pengertian</a>
+        <a href="#penyebab">Penyebab</a>
+        <a href="#dampak">Dampak</a>
+        <a href="#flora-fauna">Flora &amp; Fauna</a>
+        <a href="#data">Data</a>
+        <a href="#upaya">Pencegahan</a>
+        <a href="#tanya">Tanya AI</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO / BERANDA ===== -->
+  <section class="hero" id="beranda">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="badge">Badan Meteorologi, Klimatologi, dan Geofisika</span>
+      <h1>Kebakaran Hutan di Kalimantan</h1>
+      <p class="hero-sub">
+        Portal edukasi untuk pelajar Indonesia. Kenali apa itu kebakaran hutan,
+        apa penyebabnya, dampaknya bagi lingkungan dan masyarakat, serta bagaimana
+        cara mencegah dan menanggulanginya.
+      </p>
+      <div class="hero-actions">
+        <a href="#pengertian" class="btn btn-primary">Mulai Belajar</a>
+        <a href="#data" class="btn btn-ghost">Lihat Data</a>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <div class="stat-card">
+          <span class="stat-num" data-target="2600000" data-suffix="+">0</span>
+          <span class="stat-label">Hektar lahan terbakar (2015, estimasi nasional)</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-target="5" data-suffix=" Provinsi">0</span>
+          <span class="stat-label">Wilayah utama di Kalimantan</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" data-target="80" data-suffix="%">0</span>
+          <span class="stat-label">Kebakaran dipicu aktivitas manusia</span>
+        </div>
+      </div>
+    </div>
+    <a href="#pengertian" class="scroll-down" aria-label="Gulir ke bawah">⌄</a>
+  </section>
+
+  <main>
+    <!-- ===== PENGERTIAN ===== -->
+    <section class="section" id="pengertian">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">01 — Dasar</span>
+          <h2>Apa Itu Kebakaran Hutan?</h2>
+          <p class="section-lead">
+            Mari kita mulai dari pemahaman dasar sebelum membahas lebih jauh.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <p>
+            <strong>Kebakaran hutan dan lahan (karhutla)</strong> adalah peristiwa
+            terbakarnya hutan atau lahan, baik secara alami maupun karena perbuatan
+            manusia, yang menyebabkan kerusakan lingkungan dan kerugian ekonomi.
+          </p>
+          <p>
+            Di Kalimantan, sebagian besar wilayah merupakan <strong>lahan gambut</strong>
+            (tanah dari sisa tumbuhan yang menumpuk selama ribuan tahun). Lahan gambut
+            sangat mudah terbakar saat kering, dan apinya bisa menjalar di bawah
+            permukaan tanah sehingga sulit dipadamkan. Inilah yang membuat kebakaran
+            hutan di Kalimantan sering menghasilkan asap tebal berkepanjangan.
+          </p>
+          <div class="info-grid">
+            <div class="info-item">
+              <span class="info-icon">🌳</span>
+              <h4>Kebakaran Hutan</h4>
+              <p>Api membakar vegetasi di kawasan hutan.</p>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">🌾</span>
+              <h4>Kebakaran Lahan</h4>
+              <p>Api membakar semak, kebun, atau lahan gambut.</p>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">💨</span>
+              <h4>Kabut Asap</h4>
+              <p>Partikel hasil pembakaran yang mencemari udara.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PENYEBAB ===== -->
+    <section class="section section-alt" id="penyebab">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">02 — Faktor Pemicu</span>
+          <h2>Penyebab Kebakaran Hutan</h2>
+          <p class="section-lead">
+            Penyebab dibagi menjadi dua: faktor alam dan faktor manusia.
+            Di Kalimantan, faktor manusia adalah penyumbang terbesar.
+          </p>
+        </div>
+
+        <div class="cause-wrap">
+          <div class="cause-col reveal">
+            <h3><span class="dot dot-nature"></span> Faktor Alam</h3>
+            <ul class="check-list">
+              <li>Musim kemarau panjang yang membuat vegetasi sangat kering.</li>
+              <li>Suhu tinggi dan kelembapan udara rendah.</li>
+              <li>Fenomena iklim <em>El Niño</em> yang memperparah kekeringan.</li>
+              <li>Petir yang menyambar lahan kering (jarang terjadi).</li>
+            </ul>
+          </div>
+          <div class="cause-col reveal">
+            <h3><span class="dot dot-human"></span> Faktor Manusia</h3>
+            <ul class="check-list">
+              <li>Pembukaan lahan dengan cara dibakar karena biayanya murah.</li>
+              <li>Alih fungsi hutan menjadi perkebunan.</li>
+              <li>Pengeringan lahan gambut lewat pembuatan kanal.</li>
+              <li>Kelalaian, seperti membuang puntung rokok atau api unggun.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DAMPAK ===== -->
+    <section class="section" id="dampak">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">03 — Konsekuensi</span>
+          <h2>Dampak Kebakaran Hutan</h2>
+          <p class="section-lead">
+            Dampaknya terasa pada lingkungan sekaligus kehidupan masyarakat.
+            Klik tab di bawah untuk melihat masing-masing.
+          </p>
+        </div>
+
+        <div class="tabs reveal">
+          <div class="tab-btns" role="tablist">
+            <button class="tab-btn active" data-tab="lingkungan" role="tab" aria-selected="true">🌍 Dampak Lingkungan</button>
+            <button class="tab-btn" data-tab="masyarakat" role="tab" aria-selected="false">👥 Dampak Masyarakat</button>
+          </div>
+
+          <div class="tab-panel active" id="tab-lingkungan" role="tabpanel">
+            <div class="impact-grid">
+              <div class="impact-card">
+                <span class="impact-icon">🌫️</span>
+                <h4>Pencemaran Udara</h4>
+                <p>Asap meningkatkan polusi dan karbon dioksida di atmosfer.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🐾</span>
+                <h4>Rusaknya Habitat</h4>
+                <p>Hewan kehilangan tempat tinggal dan sumber makanan.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🌱</span>
+                <h4>Hilangnya Keanekaragaman Hayati</h4>
+                <p>Banyak flora dan fauna mati atau terancam punah.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🌡️</span>
+                <h4>Pemanasan Global</h4>
+                <p>Pelepasan karbon dari gambut mempercepat perubahan iklim.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🪨</span>
+                <h4>Kerusakan Tanah</h4>
+                <p>Lahan gambut yang terbakar sulit pulih dan menjadi tandus.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">💧</span>
+                <h4>Gangguan Siklus Air</h4>
+                <p>Hutan rusak mengganggu ketersediaan air bersih.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="tab-masyarakat" role="tabpanel" hidden>
+            <div class="impact-grid">
+              <div class="impact-card">
+                <span class="impact-icon">🫁</span>
+                <h4>Gangguan Kesehatan</h4>
+                <p>ISPA, iritasi mata, dan sesak napas akibat kabut asap.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🏫</span>
+                <h4>Sekolah Diliburkan</h4>
+                <p>Kegiatan belajar terganggu saat asap pekat melanda.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">✈️</span>
+                <h4>Transportasi Terhambat</h4>
+                <p>Jarak pandang rendah membuat penerbangan dibatalkan.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">💰</span>
+                <h4>Kerugian Ekonomi</h4>
+                <p>Aktivitas usaha, pertanian, dan pariwisata menurun.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🌍</span>
+                <h4>Dampak Lintas Negara</h4>
+                <p>Asap bisa menyebar hingga negara tetangga.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon">🧑‍🤝‍🧑</span>
+                <h4>Pengungsian</h4>
+                <p>Sebagian warga terpaksa mengungsi dari daerah terdampak.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FLORA & FAUNA ===== -->
+    <section class="section section-alt" id="flora-fauna">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">04 — Keanekaragaman Hayati</span>
+          <h2>Flora &amp; Fauna yang Terdampak</h2>
+          <p class="section-lead">
+            Kalimantan punya kekayaan hayati luar biasa. Kebakaran mengancam
+            banyak spesies, termasuk yang sudah langka.
+          </p>
+        </div>
+
+        <div class="biodiv-grid">
+          <article class="biodiv-card reveal">
+            <div class="biodiv-emoji">🦧</div>
+            <h4>Orangutan Kalimantan</h4>
+            <span class="status status-danger">Terancam Punah</span>
+            <p>Kehilangan hutan sebagai habitat dan sumber makanan utama.</p>
+          </article>
+          <article class="biodiv-card reveal">
+            <div class="biodiv-emoji">🐻</div>
+            <h4>Beruang Madu</h4>
+            <span class="status status-warn">Rentan</span>
+            <p>Terganggu oleh menyusutnya kawasan hutan tropis.</p>
+          </article>
+          <article class="biodiv-card reveal">
+            <div class="biodiv-emoji">🐒</div>
+            <h4>Bekantan</h4>
+            <span class="status status-danger">Terancam Punah</span>
+            <p>Primata endemik yang habitatnya di hutan bakau dan rawa.</p>
+          </article>
+          <article class="biodiv-card reveal">
+            <div class="biodiv-emoji">🌺</div>
+            <h4>Rafflesia</h4>
+            <span class="status status-warn">Dilindungi</span>
+            <p>Bunga langka yang hanya tumbuh di habitat hutan tertentu.</p>
+          </article>
+          <article class="biodiv-card reveal">
+            <div class="biodiv-emoji">🌳</div>
+            <h4>Pohon Ulin (Kayu Besi)</h4>
+            <span class="status status-warn">Dilindungi</span>
+            <p>Pohon khas Kalimantan yang pertumbuhannya sangat lambat.</p>
+          </article>
+          <article class="biodiv-card reveal">
+            <div class="biodiv-emoji">🐆</div>
+            <h4>Macan Dahan</h4>
+            <span class="status status-danger">Terancam Punah</span>
+            <p>Predator hutan yang kehilangan wilayah jelajahnya.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DATA ===== -->
+    <section class="section" id="data">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">05 — Data &amp; Statistik</span>
+          <h2>Data Kebakaran Hutan Kalimantan</h2>
+          <p class="section-lead">
+            Gambaran titik panas (<em>hotspot</em>) dari tahun ke tahun. Angka
+            berikut adalah ilustrasi edukatif untuk membantu pemahaman tren.
+          </p>
+        </div>
+
+        <div class="card reveal">
+          <div class="chart-head">
+            <h3>Perkiraan Titik Panas per Tahun</h3>
+            <p class="muted">Semakin tinggi batang, semakin banyak titik panas terpantau.</p>
+          </div>
+          <div class="chart" id="chart" aria-hidden="true">
+            <div class="bar" style="--val: 55%"><span class="bar-val">1.100</span><span class="bar-year">2017</span></div>
+            <div class="bar" style="--val: 40%"><span class="bar-val">800</span><span class="bar-year">2018</span></div>
+            <div class="bar" style="--val: 95%"><span class="bar-val">1.900</span><span class="bar-year">2019</span></div>
+            <div class="bar" style="--val: 30%"><span class="bar-val">600</span><span class="bar-year">2020</span></div>
+            <div class="bar" style="--val: 45%"><span class="bar-val">900</span><span class="bar-year">2021</span></div>
+            <div class="bar" style="--val: 70%"><span class="bar-val">1.400</span><span class="bar-year">2023</span></div>
+          </div>
+          <p class="muted small">
+            Catatan: tahun 2019 dan 2015 dikenal sebagai periode karhutla parah
+            akibat musim kemarau ekstrem yang diperkuat El Niño.
+          </p>
+        </div>
+
+        <div class="data-cards reveal">
+          <div class="data-card">
+            <span class="data-icon">📍</span>
+            <h4>Provinsi Rawan</h4>
+            <p>Kalimantan Tengah, Kalimantan Barat, dan Kalimantan Selatan termasuk wilayah paling sering mengalami karhutla.</p>
+          </div>
+          <div class="data-card">
+            <span class="data-icon">🗓️</span>
+            <h4>Puncak Musim</h4>
+            <p>Umumnya terjadi pada musim kemarau, sekitar bulan Juli hingga Oktober.</p>
+          </div>
+          <div class="data-card">
+            <span class="data-icon">🛰️</span>
+            <h4>Pemantauan</h4>
+            <p>BMKG dan BRIN memantau titik panas lewat satelit untuk peringatan dini.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UPAYA ===== -->
+    <section class="section section-alt" id="upaya">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">06 — Solusi</span>
+          <h2>Pencegahan &amp; Penanggulangan</h2>
+          <p class="section-lead">
+            Mencegah lebih baik daripada memadamkan. Berikut langkah pencegahan
+            dan penanggulangan yang dilakukan.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <div class="col-box reveal">
+            <h3>🛡️ Upaya Pencegahan</h3>
+            <ol class="num-list">
+              <li>Tidak membuka lahan dengan cara dibakar.</li>
+              <li>Menjaga kelembapan lahan gambut (membasahi kembali / <em>rewetting</em>).</li>
+              <li>Memberi penyuluhan dan edukasi kepada masyarakat.</li>
+              <li>Memantau titik panas lewat satelit dan peringatan dini BMKG.</li>
+              <li>Menegakkan hukum bagi pembakar lahan.</li>
+            </ol>
+          </div>
+          <div class="col-box reveal">
+            <h3>🚒 Upaya Penanggulangan</h3>
+            <ol class="num-list">
+              <li>Pemadaman darat oleh petugas Manggala Agni dan relawan.</li>
+              <li>Pemadaman udara (<em>water bombing</em>) dengan helikopter.</li>
+              <li>Teknologi Modifikasi Cuaca untuk menurunkan hujan buatan.</li>
+              <li>Mendirikan posko kesehatan dan membagikan masker.</li>
+              <li>Memulihkan lahan (reboisasi) setelah kebakaran padam.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="tips-banner reveal">
+          <span class="tips-icon">💡</span>
+          <div>
+            <h4>Apa yang bisa dilakukan pelajar?</h4>
+            <p>
+              Hemat kertas, ikut menanam pohon, menyebarkan informasi yang benar,
+              dan tidak membuang api sembarangan saat berkegiatan di alam.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KESIMPULAN ===== -->
+    <section class="section" id="kesimpulan">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">07 — Penutup</span>
+          <h2>Kesimpulan</h2>
+        </div>
+        <div class="card conclusion reveal">
+          <p>
+            Kebakaran hutan di Kalimantan adalah bencana yang sebagian besar
+            dipicu oleh aktivitas manusia dan diperparah oleh musim kemarau serta
+            kondisi lahan gambut. Dampaknya luas: mencemari udara, merusak habitat
+            flora dan fauna, mengganggu kesehatan dan ekonomi masyarakat, bahkan
+            memengaruhi negara tetangga.
+          </p>
+          <p>
+            Karena itu, pencegahan jauh lebih penting daripada pemadaman. Dengan
+            tidak membakar lahan, menjaga gambut tetap basah, dan meningkatkan
+            kesadaran bersama, kita bisa melindungi hutan Kalimantan. Sebagai
+            pelajar, langkah kecil yang kamu lakukan hari ini ikut menentukan masa
+            depan lingkungan Indonesia.
+          </p>
+          <p class="signoff">— Tim Edukasi BMKG</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TANYA AI (TEMPLATE) ===== -->
+    <section class="section section-alt" id="tanya">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">08 — Interaktif</span>
+          <h2>Tanya Asisten Kebakaran Hutan</h2>
+          <p class="section-lead">
+            Punya pertanyaan? Pilih salah satu pertanyaan cepat atau ketik
+            pertanyaanmu. (Jawaban berupa template edukatif.)
+          </p>
+        </div>
+
+        <div class="chat reveal">
+          <div class="chat-window" id="chatWindow" aria-live="polite">
+            <div class="msg msg-bot">
+              <span class="avatar">🤖</span>
+              <div class="bubble">
+                Halo! Aku Asisten Edukasi BMKG. Tanyakan apa saja seputar
+                kebakaran hutan Kalimantan ya.
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-suggest" id="chatSuggest">
+            <button class="chip" data-q="Apa itu kebakaran hutan?">Apa itu kebakaran hutan?</button>
+            <button class="chip" data-q="Apa penyebab kebakaran hutan?">Penyebabnya apa?</button>
+            <button class="chip" data-q="Apa dampaknya?">Apa dampaknya?</button>
+            <button class="chip" data-q="Bagaimana cara mencegahnya?">Cara mencegah?</button>
+          </div>
+
+          <form class="chat-input" id="chatForm">
+            <input
+              type="text"
+              id="chatText"
+              placeholder="Ketik pertanyaanmu di sini..."
+              autocomplete="off"
+              aria-label="Ketik pertanyaan"
+            />
+            <button type="submit" class="btn btn-primary" aria-label="Kirim">Kirim</button>
+          </form>
+          <p class="muted small chat-note">
+            * Fitur ini menampilkan jawaban template untuk tujuan edukasi, bukan AI sungguhan.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-logo" aria-hidden="true">🔥</span>
+        <div>
+          <strong>Edukasi Kebakaran Hutan BMKG</strong>
+          <p class="muted small">Portal pembelajaran untuk pelajar Indonesia.</p>
+        </div>
+      </div>
+      <nav class="footer-links" aria-label="Tautan footer">
+        <a href="#pengertian">Pengertian</a>
+        <a href="#dampak">Dampak</a>
+        <a href="#data">Data</a>
+        <a href="#upaya">Pencegahan</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <p class="muted small">
+        © <span id="year"></span> Website Edukasi Non-Resmi · Dibuat untuk tujuan pembelajaran.
+      </p>
+    </div>
+    <button class="to-top" id="toTop" aria-label="Kembali ke atas">↑</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
