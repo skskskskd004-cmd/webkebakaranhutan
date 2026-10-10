@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Progress baca -->
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
+
   <!-- ===== HEADER / NAVBAR ===== -->
   <header class="navbar" id="navbar">
     <div class="container nav-inner">
@@ -35,6 +38,7 @@
         <a href="#data">Data</a>
         <a href="#galeri">Galeri</a>
         <a href="#upaya">Pencegahan</a>
+        <a href="#kuis">Kuis</a>
         <a href="#tanya">Tanya AI</a>
       </nav>
     </div>
@@ -587,11 +591,142 @@
       </div>
     </section>
 
+    <!-- ===== SIMULASI RISIKO ===== -->
+    <section class="section" id="simulasi">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">09 — Simulasi</span>
+          <h2>Simulasi Tingkat Risiko Kebakaran</h2>
+          <p class="section-lead">
+            Geser pengaturan di bawah untuk melihat bagaimana cuaca memengaruhi
+            risiko kebakaran. Pelajari hubungan sebab-akibatnya sendiri!
+          </p>
+        </div>
+
+        <div class="sim card reveal">
+          <div class="sim-controls">
+            <div class="sim-field">
+              <label for="simSuhu">🌡️ Suhu udara: <strong id="simSuhuVal">34°C</strong></label>
+              <input type="range" id="simSuhu" min="20" max="45" value="34" />
+            </div>
+            <div class="sim-field">
+              <label for="simLembap">💧 Kelembapan: <strong id="simLembapVal">40%</strong></label>
+              <input type="range" id="simLembap" min="10" max="100" value="40" />
+            </div>
+            <div class="sim-field">
+              <label for="simAngin">🌬️ Kecepatan angin: <strong id="simAnginVal">15 km/jam</strong></label>
+              <input type="range" id="simAngin" min="0" max="60" value="15" />
+            </div>
+            <div class="sim-field">
+              <label for="simHujan">☔ Hari tanpa hujan: <strong id="simHujanVal">10 hari</strong></label>
+              <input type="range" id="simHujan" min="0" max="60" value="10" />
+            </div>
+          </div>
+
+          <div class="sim-result">
+            <div class="sim-gauge">
+              <div class="sim-gauge-fill" id="simGaugeFill"></div>
+            </div>
+            <div class="sim-level" id="simLevel">Sedang</div>
+            <p class="sim-score muted small">Indeks risiko: <strong id="simScore">50</strong>/100</p>
+            <p class="sim-advice" id="simAdvice">Tetap waspada. Hindari menyalakan api di area terbuka.</p>
+          </div>
+        </div>
+        <p class="muted small" style="text-align:center;margin-top:14px">
+          * Simulasi penyederhanaan untuk edukasi, bukan perhitungan resmi BMKG.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== GLOSARIUM ===== -->
+    <section class="section section-alt" id="glosarium">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">10 — Kamus Istilah</span>
+          <h2>Glosarium</h2>
+          <p class="section-lead">
+            Istilah penting seputar kebakaran hutan. Klik untuk membuka penjelasannya.
+          </p>
+        </div>
+
+        <div class="glossary reveal" id="glossary">
+          <details class="glossary-item">
+            <summary>Karhutla</summary>
+            <p>Singkatan dari <strong>Kebakaran Hutan dan Lahan</strong>, yaitu peristiwa terbakarnya hutan atau lahan baik secara alami maupun karena ulah manusia.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>Lahan Gambut</summary>
+            <p>Tanah yang terbentuk dari tumpukan sisa tumbuhan selama ribuan tahun. Saat kering, gambut sangat mudah terbakar dan apinya menjalar di bawah permukaan.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>Titik Panas (Hotspot)</summary>
+            <p>Titik di permukaan bumi yang terdeteksi satelit memiliki suhu lebih tinggi dari sekitarnya. Bisa menjadi indikasi awal adanya kebakaran.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>El Niño</summary>
+            <p>Fenomena iklim ketika suhu permukaan laut Pasifik menghangat, membuat musim kemarau di Indonesia menjadi lebih panjang dan kering sehingga kebakaran lebih mudah terjadi.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>Kabut Asap (Haze)</summary>
+            <p>Kumpulan partikel halus hasil pembakaran yang menyelimuti udara, menurunkan jarak pandang dan membahayakan kesehatan.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>Water Bombing</summary>
+            <p>Teknik pemadaman dari udara dengan menjatuhkan air dalam jumlah besar menggunakan helikopter atau pesawat ke titik api.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>Rewetting</summary>
+            <p>Upaya membasahi kembali lahan gambut yang kering agar tidak mudah terbakar, misalnya dengan menutup kanal atau membuat sekat.</p>
+          </details>
+          <details class="glossary-item">
+            <summary>ISPA</summary>
+            <p>Infeksi Saluran Pernapasan Akut. Penyakit yang sering meningkat saat kabut asap karena udara tercemar terhirup masyarakat.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KUIS ===== -->
+    <section class="section" id="kuis">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">11 — Uji Pemahaman</span>
+          <h2>Kuis Interaktif</h2>
+          <p class="section-lead">
+            Sudah paham materinya? Yuk uji dengan kuis singkat ini. Pilih jawaban
+            yang menurutmu benar.
+          </p>
+        </div>
+
+        <div class="quiz card reveal" id="quiz">
+          <div class="quiz-progress">
+            <span id="quizProgressText">Soal 1 dari 5</span>
+            <div class="quiz-progress-bar"><div id="quizProgressFill"></div></div>
+          </div>
+          <h3 class="quiz-question" id="quizQuestion">Memuat soal...</h3>
+          <div class="quiz-options" id="quizOptions"></div>
+          <p class="quiz-feedback" id="quizFeedback" hidden></p>
+          <div class="quiz-actions">
+            <button class="btn btn-primary" id="quizNext" hidden>Lanjut →</button>
+          </div>
+        </div>
+
+        <!-- Layar hasil -->
+        <div class="quiz-result card reveal" id="quizResult" hidden>
+          <div class="quiz-result-emoji" id="quizResultEmoji">🎉</div>
+          <h3 id="quizResultTitle">Kerja bagus!</h3>
+          <p class="quiz-result-score">Skormu: <strong id="quizResultScore">0</strong> dari 5</p>
+          <p class="muted" id="quizResultMsg"></p>
+          <button class="btn btn-ghost" id="quizRetry">Ulangi Kuis</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== TANYA AI (TEMPLATE) ===== -->
     <section class="section section-alt" id="tanya">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">09 — Interaktif</span>
+          <span class="eyebrow">12 — Interaktif</span>
           <h2>Tanya Asisten Kebakaran Hutan</h2>
           <p class="section-lead">
             Punya pertanyaan? Pilih salah satu pertanyaan cepat atau ketik

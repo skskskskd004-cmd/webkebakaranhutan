@@ -957,3 +957,221 @@ h1, h2, h3, h4 {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
+
+/* ===================================================================
+   FITUR BELAJAR TAMBAHAN
+   =================================================================== */
+
+/* ===== PROGRESS BACA ===== */
+.read-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 60;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px rgba(255, 157, 61, 0.6);
+}
+
+/* ===== SIMULASI RISIKO ===== */
+.sim {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+}
+.sim-controls { display: grid; gap: 20px; }
+.sim-field label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 0.92rem;
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+.sim-field label strong { color: var(--accent); }
+.sim-field input[type="range"] {
+  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 7px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  cursor: pointer;
+}
+.sim-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  border: 2px solid #fff2;
+  box-shadow: 0 2px 8px rgba(255, 106, 43, 0.5);
+}
+.sim-field input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #fff2;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+.sim-result {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  padding: 28px 22px;
+}
+.sim-gauge {
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green), var(--accent), var(--warn), var(--red));
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+.sim-gauge-fill {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50%;
+  background: rgba(23, 26, 33, 0.82);
+  transition: width 0.4s var(--ease);
+}
+.sim-level {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.sim-advice {
+  margin-top: 12px;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+/* ===== GLOSARIUM ===== */
+.glossary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 14px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.glossary-item {
+  background: var(--surface-2);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius-sm);
+  padding: 4px 20px;
+  transition: border-color 0.25s;
+}
+.glossary-item[open] { border-color: rgba(255, 106, 43, 0.4); }
+.glossary-item summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 14px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.glossary-item summary::-webkit-details-marker { display: none; }
+.glossary-item summary::after {
+  content: "+";
+  font-size: 1.4rem;
+  color: var(--primary-2);
+  transition: transform 0.25s var(--ease);
+}
+.glossary-item[open] summary::after { transform: rotate(45deg); }
+.glossary-item p {
+  padding: 0 0 16px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* ===== KUIS ===== */
+.quiz { max-width: 760px; margin: 0 auto; }
+.quiz-progress {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.quiz-progress-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.quiz-progress-bar div {
+  height: 100%;
+  width: 20%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  transition: width 0.4s var(--ease);
+}
+.quiz-question {
+  font-size: 1.15rem;
+  margin-bottom: 22px;
+  line-height: 1.5;
+}
+.quiz-options { display: grid; gap: 12px; }
+.quiz-option {
+  text-align: left;
+  padding: 15px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.quiz-option:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(4px);
+}
+.quiz-option:disabled { cursor: default; }
+.quiz-option.correct {
+  background: rgba(61, 220, 132, 0.16);
+  border-color: var(--green);
+  color: #c7f7dc;
+}
+.quiz-option.wrong {
+  background: rgba(255, 90, 90, 0.16);
+  border-color: var(--red);
+  color: #ffd3d3;
+}
+.quiz-feedback {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--primary);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.quiz-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.quiz-result { max-width: 560px; margin: 0 auto; text-align: center; }
+.quiz-result-emoji { font-size: 3.4rem; margin-bottom: 8px; }
+.quiz-result-score { font-size: 1.1rem; margin: 10px 0; }
+.quiz-result-score strong { color: var(--accent); font-size: 1.4rem; }
+.quiz-result .btn { margin-top: 18px; }
+
+/* ===== RESPONSIVE FITUR BARU ===== */
+@media (max-width: 760px) {
+  .sim { grid-template-columns: 1fr; gap: 24px; }
+}

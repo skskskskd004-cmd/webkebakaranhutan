@@ -153,6 +153,214 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- Progress baca ---------- */
+  const readProgress = document.getElementById("readProgress");
+  if (readProgress) {
+    const updateProgress = () => {
+      const h = document.documentElement;
+      const scrollable = h.scrollHeight - h.clientHeight;
+      const pct = scrollable > 0 ? (h.scrollTop / scrollable) * 100 : 0;
+      readProgress.style.width = pct + "%";
+    };
+    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("resize", updateProgress);
+    updateProgress();
+  }
+
+  /* ---------- Simulasi tingkat risiko kebakaran ---------- */
+  const simSuhu = document.getElementById("simSuhu");
+  if (simSuhu) {
+    const simLembap = document.getElementById("simLembap");
+    const simAngin = document.getElementById("simAngin");
+    const simHujan = document.getElementById("simHujan");
+    const simSuhuVal = document.getElementById("simSuhuVal");
+    const simLembapVal = document.getElementById("simLembapVal");
+    const simAnginVal = document.getElementById("simAnginVal");
+    const simHujanVal = document.getElementById("simHujanVal");
+    const simGaugeFill = document.getElementById("simGaugeFill");
+    const simLevel = document.getElementById("simLevel");
+    const simScore = document.getElementById("simScore");
+    const simAdvice = document.getElementById("simAdvice");
+
+    // Pemetaan skor -> level, warna, dan saran.
+    const simLevels = [
+      { max: 25, label: "Rendah", color: "#3ddc84", advice: "Kondisi aman. Risiko kebakaran kecil." },
+      { max: 50, label: "Sedang", color: "#ffcf4d", advice: "Tetap waspada. Hindari menyalakan api di area terbuka." },
+      { max: 75, label: "Tinggi", color: "#ffb020", advice: "Risiko besar. Dilarang membakar apa pun di lahan." },
+      { max: 101, label: "Ekstrem", color: "#ff5a5a", advice: "Sangat berbahaya! Siaga penuh dan laporkan asap sekecil apa pun." },
+    ];
+
+    const hitungRisiko = () => {
+      const suhu = Number(simSuhu.value);
+      const lembap = Number(simLembap.value);
+      const angin = Number(simAngin.value);
+      const hujan = Number(simHujan.value);
+
+      simSuhuVal.textContent = suhu + "°C";
+      simLembapVal.textContent = lembap + "%";
+      simAnginVal.textContent = angin + " km/jam";
+      simHujanVal.textContent = hujan + " hari";
+
+      // Semua dinormalkan ke 0-1 lalu diberi bobot. Kelembapan berbanding terbalik.
+      const nSuhu = (suhu - 20) / (45 - 20);
+      const nKering = 1 - lembap / 100;
+      const nAngin = angin / 60;
+      const nHujan = hujan / 60;
+      let skor = (nSuhu * 0.3 + nKering * 0.3 + nAngin * 0.15 + nHujan * 0.25) * 100;
+      skor = Math.round(Math.max(0, Math.min(100, skor)));
+
+      const lvl = simLevels.find((l) => skor < l.max) || simLevels[simLevels.length - 1];
+      simGaugeFill.style.width = 100 - skor + "%";
+      simLevel.textContent = lvl.label;
+      simLevel.style.color = lvl.color;
+      simScore.textContent = skor;
+      simAdvice.textContent = lvl.advice;
+    };
+
+    [simSuhu, simLembap, simAngin, simHujan].forEach((el) =>
+      el.addEventListener("input", hitungRisiko)
+    );
+    hitungRisiko();
+  }
+
+  /* ---------- Kuis interaktif ---------- */
+  const quizEl = document.getElementById("quiz");
+  if (quizEl) {
+    const questions = [
+      {
+        q: "Apa kepanjangan dari istilah 'karhutla'?",
+        options: [
+          "Kebakaran Hutan dan Lahan",
+          "Kabut Hutan dan Lautan",
+          "Karbon Hutan Terlalu Banyak",
+          "Kawasan Hutan Terlindungi",
+        ],
+        correct: 0,
+        explain: "Karhutla = Kebakaran Hutan dan Lahan.",
+      },
+      {
+        q: "Jenis lahan apa di Kalimantan yang membuat api sangat sulit dipadamkan?",
+        options: ["Lahan pasir", "Lahan gambut", "Lahan berbatu", "Lahan salju"],
+        correct: 1,
+        explain: "Lahan gambut mudah terbakar dan apinya menjalar di bawah permukaan tanah.",
+      },
+      {
+        q: "Faktor apa yang menjadi penyebab terbesar kebakaran hutan di Kalimantan?",
+        options: ["Petir", "Letusan gunung", "Aktivitas manusia", "Gempa bumi"],
+        correct: 2,
+        explain: "Sebagian besar karhutla di Kalimantan dipicu aktivitas manusia, seperti membuka lahan dengan dibakar.",
+      },
+      {
+        q: "Penyakit apa yang sering meningkat saat terjadi kabut asap?",
+        options: ["Demam berdarah", "ISPA", "Diare", "Patah tulang"],
+        correct: 1,
+        explain: "ISPA (Infeksi Saluran Pernapasan Akut) meningkat karena udara tercemar asap.",
+      },
+      {
+        q: "Teknik memadamkan api dari udara dengan menjatuhkan air disebut?",
+        options: ["Rewetting", "Reboisasi", "Water bombing", "Hujan asam"],
+        correct: 2,
+        explain: "Water bombing adalah pemadaman dari udara memakai helikopter atau pesawat.",
+      },
+    ];
+
+    const qQuestion = document.getElementById("quizQuestion");
+    const qOptions = document.getElementById("quizOptions");
+    const qFeedback = document.getElementById("quizFeedback");
+    const qNext = document.getElementById("quizNext");
+    const qProgressText = document.getElementById("quizProgressText");
+    const qProgressFill = document.getElementById("quizProgressFill");
+    const quizResult = document.getElementById("quizResult");
+    const qResultScore = document.getElementById("quizResultScore");
+    const qResultEmoji = document.getElementById("quizResultEmoji");
+    const qResultTitle = document.getElementById("quizResultTitle");
+    const qResultMsg = document.getElementById("quizResultMsg");
+    const qRetry = document.getElementById("quizRetry");
+
+    let current = 0;
+    let score = 0;
+    let answered = false;
+
+    const renderQuestion = () => {
+      answered = false;
+      const item = questions[current];
+      qQuestion.textContent = item.q;
+      qFeedback.hidden = true;
+      qNext.hidden = true;
+      qProgressText.textContent = "Soal " + (current + 1) + " dari " + questions.length;
+      qProgressFill.style.width = ((current + 1) / questions.length) * 100 + "%";
+
+      qOptions.innerHTML = "";
+      item.options.forEach((opt, i) => {
+        const btn = document.createElement("button");
+        btn.className = "quiz-option";
+        btn.textContent = opt;
+        btn.addEventListener("click", () => selectAnswer(i, btn));
+        qOptions.appendChild(btn);
+      });
+    };
+
+    const selectAnswer = (choice, btn) => {
+      if (answered) return;
+      answered = true;
+      const item = questions[current];
+      const allBtns = qOptions.querySelectorAll(".quiz-option");
+      allBtns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === item.correct) b.classList.add("correct");
+      });
+      if (choice === item.correct) {
+        score++;
+        qFeedback.textContent = "✅ Benar! " + item.explain;
+      } else {
+        btn.classList.add("wrong");
+        qFeedback.textContent = "❌ Kurang tepat. " + item.explain;
+      }
+      qFeedback.hidden = false;
+      qNext.hidden = false;
+      qNext.textContent = current < questions.length - 1 ? "Lanjut →" : "Lihat Hasil →";
+    };
+
+    const showResult = () => {
+      quizEl.hidden = true;
+      quizResult.hidden = false;
+      qResultScore.textContent = score;
+      let emoji, title, msg;
+      if (score === questions.length) {
+        emoji = "🏆"; title = "Luar biasa!";
+        msg = "Nilai sempurna! Kamu sudah paham betul soal kebakaran hutan.";
+      } else if (score >= 3) {
+        emoji = "🎉"; title = "Kerja bagus!";
+        msg = "Pemahamanmu sudah baik. Baca lagi bagian yang belum tepat ya.";
+      } else {
+        emoji = "📚"; title = "Terus belajar!";
+        msg = "Jangan menyerah. Coba baca kembali materinya lalu ulangi kuis.";
+      }
+      qResultEmoji.textContent = emoji;
+      qResultTitle.textContent = title;
+      qResultMsg.textContent = msg;
+    };
+
+    qNext.addEventListener("click", () => {
+      if (current < questions.length - 1) {
+        current++;
+        renderQuestion();
+      } else {
+        showResult();
+      }
+    });
+
+    qRetry.addEventListener("click", () => {
+      current = 0;
+      score = 0;
+      quizResult.hidden = true;
+      quizEl.hidden = false;
+      renderQuestion();
+    });
+
+    renderQuestion();
+  }
+
   /* ---------- Tab Dampak ---------- */
   const tabBtns = document.querySelectorAll(".tab-btn");
   const tabPanels = document.querySelectorAll(".tab-panel");
