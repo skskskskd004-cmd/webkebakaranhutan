@@ -262,6 +262,41 @@ document.addEventListener("DOMContentLoaded", () => {
         correct: 2,
         explain: "Water bombing adalah pemadaman dari udara memakai helikopter atau pesawat.",
       },
+      {
+        q: "Fenomena iklim apa yang membuat musim kemarau di Indonesia menjadi lebih panjang dan kering?",
+        options: ["La Niña", "El Niño", "Tsunami", "Aurora"],
+        correct: 1,
+        explain: "El Niño memanaskan suhu laut Pasifik sehingga kemarau lebih panjang dan kebakaran lebih mudah terjadi.",
+      },
+      {
+        q: "Pada bulan apa karhutla di Kalimantan biasanya mencapai puncaknya?",
+        options: ["Januari–Maret", "Juli–Oktober", "November–Desember", "April–Mei"],
+        correct: 1,
+        explain: "Puncak karhutla umumnya terjadi di musim kemarau, sekitar Juli hingga Oktober.",
+      },
+      {
+        q: "Hewan khas Kalimantan yang terancam punah akibat kehilangan habitat hutan adalah?",
+        options: ["Komodo", "Orangutan", "Penguin", "Panda"],
+        correct: 1,
+        explain: "Orangutan Kalimantan sangat bergantung pada hutan sebagai habitat dan sumber makanannya.",
+      },
+      {
+        q: "Upaya menjaga lahan gambut tetap basah agar tidak mudah terbakar disebut?",
+        options: ["Rewetting", "Water bombing", "Deforestasi", "Irigasi sawah"],
+        correct: 0,
+        explain: "Rewetting adalah membasahi kembali gambut, misalnya dengan menutup kanal atau membuat sekat.",
+      },
+      {
+        q: "Sebagai pelajar, tindakan mana yang membantu mencegah kebakaran hutan?",
+        options: [
+          "Membakar sampah sembarangan",
+          "Membuang puntung rokok di hutan",
+          "Ikut menanam pohon dan hemat kertas",
+          "Membuka lahan dengan dibakar",
+        ],
+        correct: 2,
+        explain: "Menanam pohon dan hemat kertas adalah langkah kecil pelajar yang nyata membantu menjaga hutan.",
+      },
     ];
 
     const qQuestion = document.getElementById("quizQuestion");
@@ -325,13 +360,17 @@ document.addEventListener("DOMContentLoaded", () => {
       quizEl.hidden = true;
       quizResult.hidden = false;
       qResultScore.textContent = score;
+      const persen = (score / questions.length) * 100;
       let emoji, title, msg;
       if (score === questions.length) {
         emoji = "🏆"; title = "Luar biasa!";
         msg = "Nilai sempurna! Kamu sudah paham betul soal kebakaran hutan.";
-      } else if (score >= 3) {
+      } else if (persen >= 70) {
         emoji = "🎉"; title = "Kerja bagus!";
         msg = "Pemahamanmu sudah baik. Baca lagi bagian yang belum tepat ya.";
+      } else if (persen >= 40) {
+        emoji = "🙂"; title = "Lumayan!";
+        msg = "Sudah cukup paham, tapi masih bisa ditingkatkan. Yuk ulangi lagi.";
       } else {
         emoji = "📚"; title = "Terus belajar!";
         msg = "Jangan menyerah. Coba baca kembali materinya lalu ulangi kuis.";
@@ -462,6 +501,85 @@ document.addEventListener("DOMContentLoaded", () => {
       text:
         "Sebagai pelajar kamu bisa: hemat kertas, ikut menanam pohon, menyebarkan info yang benar, " +
         "dan tidak membuang api sembarangan saat berkegiatan di alam. Langkah kecil tetap berarti!",
+    },
+    {
+      keys: ["el nino", "el niño", "iklim", "cuaca ekstrem"],
+      text:
+        "El Niño adalah fenomena menghangatnya suhu permukaan laut Pasifik. Dampaknya, musim " +
+        "kemarau di Indonesia jadi lebih panjang dan kering, sehingga kebakaran hutan lebih " +
+        "mudah terjadi. Tahun 2015, 2019, dan 2023 adalah contoh tahun El Niño yang parah.",
+    },
+    {
+      keys: ["titik panas", "hotspot", "satelit", "deteksi", "pantau", "peringatan dini"],
+      text:
+        "Titik panas (hotspot) adalah lokasi bersuhu tinggi yang terdeteksi satelit, bisa jadi " +
+        "tanda awal kebakaran. BMKG dan BRIN memantau titik panas lewat satelit untuk memberi " +
+        "peringatan dini agar api bisa cepat ditangani sebelum meluas.",
+    },
+    {
+      keys: ["asap", "kabut asap", "haze", "polusi udara", "ispa"],
+      text:
+        "Kabut asap adalah partikel halus hasil pembakaran yang menyelimuti udara. Dampaknya: " +
+        "jarak pandang menurun, muncul penyakit ISPA, sekolah bisa diliburkan, dan penerbangan " +
+        "terganggu. Pakai masker dan kurangi aktivitas di luar saat asap pekat.",
+    },
+    {
+      keys: ["water bombing", "helikopter", "pemadaman udara", "hujan buatan", "modifikasi cuaca"],
+      text:
+        "Pemadaman dari udara dilakukan dengan water bombing (menjatuhkan air dari helikopter) " +
+        "dan Teknologi Modifikasi Cuaca untuk membuat hujan buatan. Keduanya dipakai saat api " +
+        "sudah luas dan sulit dijangkau dari darat.",
+    },
+    {
+      keys: ["manggala agni", "petugas", "pemadam", "siapa yang"],
+      text:
+        "Manggala Agni adalah pasukan khusus pemadam kebakaran hutan dari Kementerian Kehutanan. " +
+        "Mereka dibantu BPBD, TNI, Polri, dan relawan masyarakat untuk memadamkan api di darat.",
+    },
+    {
+      keys: ["reboisasi", "pulih", "pemulihan", "tanam pohon", "restorasi"],
+      text:
+        "Setelah api padam, lahan dipulihkan lewat reboisasi (penanaman pohon kembali) dan " +
+        "restorasi gambut. Tujuannya mengembalikan fungsi hutan sebagai rumah satwa dan penyimpan air.",
+    },
+    {
+      keys: ["orangutan", "bekantan", "hewan", "satwa", "fauna", "flora", "tumbuhan", "rafflesia", "ulin"],
+      text:
+        "Kebakaran mengancam banyak spesies khas Kalimantan, seperti orangutan, bekantan, " +
+        "beruang madu, dan macan dahan. Tumbuhan seperti pohon ulin dan bunga Rafflesia juga " +
+        "ikut terdampak karena habitatnya rusak terbakar.",
+    },
+    {
+      keys: ["kapan", "musim", "bulan", "waktu", "sering terjadi"],
+      text:
+        "Kebakaran hutan paling sering terjadi saat musim kemarau, biasanya antara bulan Juli " +
+        "hingga Oktober. Pada periode ini lahan sangat kering sehingga api mudah menyebar.",
+    },
+    {
+      keys: ["provinsi", "daerah", "wilayah", "lokasi", "di mana", "dimana", "kalimantan mana"],
+      text:
+        "Di Kalimantan, wilayah yang paling sering mengalami karhutla adalah Kalimantan Tengah, " +
+        "Kalimantan Barat, dan Kalimantan Selatan, karena punya lahan gambut yang luas.",
+    },
+    {
+      keys: ["lapor", "melapor", "nomor", "darurat", "menemukan api", "ada kebakaran"],
+      text:
+        "Jika melihat titik api atau asap, segera laporkan ke pemerintah daerah/BPBD setempat " +
+        "atau hubungi nomor darurat 112. Jangan mencoba memadamkan api besar sendirian, " +
+        "utamakan keselamatanmu.",
+    },
+    {
+      keys: ["bmkg", "tugas bmkg", "apa itu bmkg"],
+      text:
+        "BMKG (Badan Meteorologi, Klimatologi, dan Geofisika) bertugas memantau cuaca, iklim, " +
+        "dan kualitas udara. Terkait karhutla, BMKG memberi informasi cuaca, prakiraan kemarau, " +
+        "dan memantau sebaran asap untuk membantu pencegahan.",
+    },
+    {
+      keys: ["terima kasih", "makasih", "thanks", "oke", "ok"],
+      text:
+        "Sama-sama! Senang bisa membantu. Jangan ragu bertanya lagi, dan jangan lupa coba " +
+        "Kuis Interaktif di halaman ini untuk menguji pemahamanmu ya. 🌳",
     },
   ];
 
