@@ -153,6 +153,56 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  /* ---------- Mitos vs Fakta: balik kartu ---------- */
+  document.querySelectorAll(".myth-card").forEach((card) => {
+    card.addEventListener("click", () => card.classList.toggle("flipped"));
+  });
+
+  /* ---------- Toast (notifikasi kecil) ---------- */
+  let toastEl = null;
+  let toastTimer = null;
+  const showToast = (msg) => {
+    if (!toastEl) {
+      toastEl = document.createElement("div");
+      toastEl.className = "toast";
+      document.body.appendChild(toastEl);
+    }
+    toastEl.textContent = msg;
+    requestAnimationFrame(() => toastEl.classList.add("show"));
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2600);
+  };
+
+  /* ---------- Tombol Bagikan ---------- */
+  const shareBtn = document.getElementById("shareBtn");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async () => {
+      const data = {
+        title: document.title,
+        text: "Belajar tentang kebakaran hutan Kalimantan di sini:",
+        url: window.location.href,
+      };
+      try {
+        if (navigator.share) {
+          await navigator.share(data);
+        } else if (navigator.clipboard) {
+          await navigator.clipboard.writeText(window.location.href);
+          showToast("Tautan halaman disalin ke clipboard! 🔗");
+        } else {
+          showToast("Salin tautan dari address bar browser ya.");
+        }
+      } catch (e) {
+        // pengguna membatalkan berbagi; abaikan
+      }
+    });
+  }
+
+  /* ---------- Tombol Cetak ---------- */
+  const printBtn = document.getElementById("printBtn");
+  if (printBtn) {
+    printBtn.addEventListener("click", () => window.print());
+  }
+
   /* ---------- Progress baca ---------- */
   const readProgress = document.getElementById("readProgress");
   if (readProgress) {
