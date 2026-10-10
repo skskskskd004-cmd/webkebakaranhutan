@@ -122,6 +122,37 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   document.querySelectorAll(".chart").forEach(animateChart);
 
+  /* ---------- Kontrol peta lokasi ---------- */
+  const mapControls = document.getElementById("mapControls");
+  const mapFrame = document.getElementById("mapFrame");
+  const mapLink = document.getElementById("mapLink");
+  // bbox: batas peta [kiri, bawah, kanan, atas]; marker: titik [lat, lon]; zoom + center untuk tautan.
+  const mapLocations = {
+    kalimantan: { bbox: "108.5,-4.3,119.3,4.3", marker: "-1.68,113.38", zoom: 6, lat: -1.68, lon: 113.38 },
+    tengah: { bbox: "110.8,-3.6,115.8,0.6", marker: "-1.68,113.38", zoom: 7, lat: -1.68, lon: 113.38 },
+    barat: { bbox: "108.3,-2.5,114.3,2.3", marker: "-0.02,109.33", zoom: 7, lat: -0.02, lon: 109.33 },
+    selatan: { bbox: "113.5,-4.5,116.9,-1.3", marker: "-3.09,115.28", zoom: 7, lat: -3.09, lon: 115.28 },
+  };
+  if (mapControls && mapFrame) {
+    mapControls.querySelectorAll(".chip").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const loc = mapLocations[btn.dataset.loc];
+        if (!loc) return;
+        mapControls.querySelectorAll(".chip").forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        mapFrame.src =
+          "https://www.openstreetmap.org/export/embed.html?bbox=" +
+          loc.bbox +
+          "&layer=mapnik&marker=" +
+          loc.marker;
+        if (mapLink) {
+          mapLink.href =
+            "https://www.openstreetmap.org/#map=" + loc.zoom + "/" + loc.lat + "/" + loc.lon;
+        }
+      });
+    });
+  }
+
   /* ---------- Tab Dampak ---------- */
   const tabBtns = document.querySelectorAll(".tab-btn");
   const tabPanels = document.querySelectorAll(".tab-panel");

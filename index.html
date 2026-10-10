@@ -33,6 +33,7 @@
         <a href="#dampak">Dampak</a>
         <a href="#flora-fauna">Flora &amp; Fauna</a>
         <a href="#data">Data</a>
+        <a href="#galeri">Galeri</a>
         <a href="#upaya">Pencegahan</a>
         <a href="#tanya">Tanya AI</a>
       </nav>
@@ -413,11 +414,109 @@
       </div>
     </section>
 
+    <!-- ===== GALERI & LOKASI ===== -->
+    <section class="section section-alt" id="galeri">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">06 — Dokumentasi</span>
+          <h2>Gambar &amp; Lokasi Kebakaran</h2>
+          <p class="section-lead">
+            Dokumentasi visual kebakaran hutan dan peta wilayah yang sering
+            terdampak di Kalimantan.
+          </p>
+        </div>
+
+        <!-- Galeri foto -->
+        <div class="gallery reveal">
+          <figure class="gallery-item">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Hutan_Terbakar_-_panoramio.jpg?width=800"
+              alt="Hutan yang terbakar dengan api dan vegetasi hangus di Indonesia"
+              loading="lazy" width="800" height="480" />
+            <figcaption>Hutan terbakar saat musim kemarau di Indonesia.</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Central_-_South_Kalimantan_Rainforest_%26_Fires,_Indonesia_(34680238435).jpg?width=800"
+              alt="Pemandangan udara hutan dan titik kebakaran di Kalimantan Tengah dan Selatan"
+              loading="lazy" width="800" height="827" />
+            <figcaption>Titik kebakaran di hutan Kalimantan (foto udara).</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Heavy_Smoke_Blankets_Borneo_(22126477788).jpg?width=800"
+              alt="Asap tebal menyelimuti Pulau Borneo atau Kalimantan dilihat dari satelit"
+              loading="lazy" width="800" height="1337" />
+            <figcaption>Asap tebal menyelimuti Kalimantan (citra satelit NASA).</figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Burned_Peatland_in_Indonesia.jpg?width=800"
+              alt="Lahan gambut yang hangus setelah kebakaran di Indonesia"
+              loading="lazy" width="800" height="1066" />
+            <figcaption>Lahan gambut yang hangus setelah kebakaran.</figcaption>
+          </figure>
+        </div>
+        <p class="muted small" style="text-align:center;margin-top:14px">
+          Foto dari Wikimedia Commons (lisensi bebas). Dua foto terakhir merupakan citra satelit NASA.
+        </p>
+
+        <!-- Peta lokasi -->
+        <div class="section-head reveal" style="margin-top:64px">
+          <span class="eyebrow">Peta</span>
+          <h3 style="font-size:clamp(1.4rem,3.5vw,2rem)">Lokasi Wilayah Rawan di Kalimantan</h3>
+          <p class="section-lead">
+            Pulau Kalimantan dengan wilayah yang sering mengalami karhutla.
+            Klik tombol di bawah untuk menyorot provinsi tertentu di peta.
+          </p>
+        </div>
+
+        <div class="map-wrap reveal">
+          <div class="map-controls" id="mapControls">
+            <button class="chip active" data-loc="kalimantan">🗺️ Seluruh Kalimantan</button>
+            <button class="chip" data-loc="tengah">📍 Kalimantan Tengah</button>
+            <button class="chip" data-loc="barat">📍 Kalimantan Barat</button>
+            <button class="chip" data-loc="selatan">📍 Kalimantan Selatan</button>
+          </div>
+          <div class="map-frame">
+            <iframe
+              id="mapFrame"
+              title="Peta lokasi wilayah rawan kebakaran hutan di Kalimantan"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=108.5,-4.3,119.3,4.3&layer=mapnik&marker=-1.68,113.38"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          <div class="map-legend">
+            <span><span class="dot dot-human"></span> Wilayah sangat rawan</span>
+            <a id="mapLink" href="https://www.openstreetmap.org/#map=6/-1.68/113.38" target="_blank" rel="noopener">Buka peta lebih besar ↗</a>
+          </div>
+        </div>
+
+        <div class="data-cards reveal">
+          <div class="data-card">
+            <span class="data-icon">🌍</span>
+            <h4>Kalimantan Tengah</h4>
+            <p>Wilayah gambut luas; termasuk provinsi dengan titik panas terbanyak.</p>
+          </div>
+          <div class="data-card">
+            <span class="data-icon">🌲</span>
+            <h4>Kalimantan Barat</h4>
+            <p>Banyak lahan perkebunan dan gambut yang rawan terbakar saat kemarau.</p>
+          </div>
+          <div class="data-card">
+            <span class="data-icon">🔥</span>
+            <h4>Kalimantan Selatan</h4>
+            <p>Sering muncul titik api di lahan kering sekitar Banjarbaru dan Banjar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== UPAYA ===== -->
     <section class="section section-alt" id="upaya">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">06 — Solusi</span>
+          <span class="eyebrow">07 — Solusi</span>
           <h2>Pencegahan &amp; Penanggulangan</h2>
           <p class="section-lead">
             Mencegah lebih baik daripada memadamkan. Berikut langkah pencegahan
@@ -465,7 +564,7 @@
     <section class="section" id="kesimpulan">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">07 — Penutup</span>
+          <span class="eyebrow">08 — Penutup</span>
           <h2>Kesimpulan</h2>
         </div>
         <div class="card conclusion reveal">
@@ -492,7 +591,7 @@
     <section class="section section-alt" id="tanya">
       <div class="container">
         <div class="section-head reveal">
-          <span class="eyebrow">08 — Interaktif</span>
+          <span class="eyebrow">09 — Interaktif</span>
           <h2>Tanya Asisten Kebakaran Hutan</h2>
           <p class="section-lead">
             Punya pertanyaan? Pilih salah satu pertanyaan cepat atau ketik
