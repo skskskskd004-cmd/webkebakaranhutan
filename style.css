@@ -503,18 +503,23 @@ h1, h2, h3, h4 {
 .biodiv-photo {
   position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #0b0d11;
+  /* latar bertema api lembut agar area kosong di sekitar foto tetap menyatu */
+  background:
+    radial-gradient(circle at 50% 120%, rgba(255, 106, 43, 0.18), transparent 60%),
+    #0b0d11;
 }
 .biodiv-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* contain = seluruh foto SELALU terlihat utuh, tidak pernah terpotong */
+  object-fit: contain;
   object-position: center;
-  transition: transform 0.5s var(--ease);
+  padding: 6px;
+  transition: transform 0.4s var(--ease);
 }
-.biodiv-card:hover .biodiv-photo img { transform: scale(1.08); }
+.biodiv-card:hover .biodiv-photo img { transform: scale(1.04); }
 .biodiv-emoji {
   position: absolute;
   left: 12px;
@@ -993,9 +998,8 @@ h1, h2, h3, h4 {
   .two-col { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr; }
 
-  /* Flora & fauna: 2 kolom di tablet, foto lebih tinggi */
+  /* Flora & fauna: 2 kolom di tablet (foto tetap utuh via aspect-ratio bawaan) */
   .biodiv-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
-  .biodiv-photo { height: 190px; }
 }
 
 @media (max-width: 520px) {
@@ -1014,14 +1018,9 @@ h1, h2, h3, h4 {
   #chartNasional .bar-year { font-size: 0.6rem; }
   .footer-inner { flex-direction: column; }
 
-  /* Flora & fauna di HP: 1 kolom, foto utuh tidak terpotong */
+  /* Flora & fauna di HP: 1 kolom besar, foto tampil penuh & jelas */
   .biodiv-grid { grid-template-columns: 1fr; gap: 16px; }
-  .biodiv-photo {
-    height: auto;
-    aspect-ratio: 4 / 3;
-    background: #0b0d11;
-  }
-  .biodiv-photo img { object-fit: contain; }
+  .biodiv-photo { aspect-ratio: 3 / 2; }
 }
 
 /* ===== AKSESIBILITAS ===== */
