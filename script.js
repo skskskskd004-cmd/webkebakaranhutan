@@ -105,22 +105,22 @@ document.addEventListener("DOMContentLoaded", () => {
   statNums.forEach((el) => statObserver.observe(el));
 
   /* ---------- Chart batang: animasi tumbuh ---------- */
-  const chart = document.getElementById("chart");
-  if (chart) {
-    const bars = chart.querySelectorAll(".bar");
+  const animateChart = (chartEl) => {
+    const bars = chartEl.querySelectorAll(".bar");
     const chartObserver = new IntersectionObserver(
       (entries, obs) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            bars.forEach((b, i) => setTimeout(() => b.classList.add("grow"), i * 120));
+            bars.forEach((b, i) => setTimeout(() => b.classList.add("grow"), i * 100));
             obs.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.4 }
+      { threshold: 0.3 }
     );
-    chartObserver.observe(chart);
-  }
+    chartObserver.observe(chartEl);
+  };
+  document.querySelectorAll(".chart").forEach(animateChart);
 
   /* ---------- Tab Dampak ---------- */
   const tabBtns = document.querySelectorAll(".tab-btn");
