@@ -471,43 +471,16 @@ h1, h2, h3, h4 {
   background: var(--surface-2);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: var(--radius-sm);
-  overflow: hidden;
+  padding: 22px;
   transition: transform 0.25s var(--ease), border-color 0.25s;
 }
 .impact-card:hover {
   transform: translateY(-5px);
   border-color: rgba(255, 106, 43, 0.4);
 }
-.impact-photo {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-  background: #0b0d11;
-}
-.impact-photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s var(--ease);
-}
-.impact-card:hover .impact-photo img { transform: scale(1.07); }
-.impact-icon {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  font-size: 1.35rem;
-  background: rgba(15, 17, 21, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 50%;
-  backdrop-filter: blur(4px);
-}
-.impact-card h4 { margin: 16px 16px 6px; }
-.impact-card p { color: var(--muted); font-size: 0.9rem; margin: 0 16px 18px; }
+.impact-icon { font-size: 1.8rem; display: block; margin-bottom: 10px; }
+.impact-card h4 { margin-bottom: 6px; }
+.impact-card p { color: var(--muted); font-size: 0.9rem; }
 
 /* ===== FLORA & FAUNA ===== */
 .biodiv-grid {
