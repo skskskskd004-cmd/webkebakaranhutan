@@ -543,6 +543,45 @@
           Foto dari Wikimedia Commons (lisensi bebas). Dua foto terakhir merupakan citra satelit NASA.
         </p>
 
+        <!-- Dokumentasi Before / After -->
+        <div class="section-head reveal" style="margin-top:64px">
+          <span class="eyebrow">Sebelum &amp; Sesudah</span>
+          <h3 style="font-size:clamp(1.4rem,3.5vw,2rem)">Kondisi Hutan: Sebelum vs Sesudah Terbakar</h3>
+          <p class="section-lead">
+            Geser garis di tengah gambar untuk membandingkan kondisi hutan yang
+            masih hijau dengan kondisi setelah dilanda kebakaran.
+          </p>
+        </div>
+
+        <div class="ba-wrap reveal">
+          <div class="ba-slider" id="baSlider">
+            <!-- Gambar SESUDAH (lapisan bawah, terlihat di kanan) -->
+            <img class="ba-img ba-after"
+                 src="https://commons.wikimedia.org/wiki/Special:FilePath/Hutan_Terbakar_-_panoramio.jpg?width=1000"
+                 alt="Hutan setelah terbakar, pepohonan hangus dan gersang"
+                 draggable="false" />
+            <!-- Gambar SEBELUM (lapisan atas, dipotong oleh handle) -->
+            <div class="ba-before-wrap" id="baBeforeWrap">
+              <img class="ba-img ba-before"
+                   src="https://commons.wikimedia.org/wiki/Special:FilePath/Hutan_Hujan_Pegunungan_Meratus.jpg?width=1000"
+                   alt="Hutan hujan hijau yang masih lebat sebelum kebakaran"
+                   draggable="false" />
+            </div>
+            <span class="ba-label ba-label-before">SEBELUM 🌳</span>
+            <span class="ba-label ba-label-after">SESUDAH 🔥</span>
+            <!-- Handle geser -->
+            <div class="ba-handle" id="baHandle">
+              <span class="ba-handle-line"></span>
+              <span class="ba-handle-circle">⟺</span>
+            </div>
+            <input type="range" class="ba-range" id="baRange" min="0" max="100" value="50"
+                   aria-label="Geser untuk membandingkan sebelum dan sesudah" />
+          </div>
+        </div>
+        <p class="muted small" style="text-align:center;margin-top:14px">
+          Foto ilustrasi (hutan hujan &amp; hutan terbakar) dari Wikimedia Commons, bukan lokasi yang persis sama.
+        </p>
+
         <!-- Peta lokasi -->
         <div class="section-head reveal" style="margin-top:64px">
           <span class="eyebrow">Peta</span>

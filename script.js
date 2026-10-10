@@ -158,6 +158,19 @@ document.addEventListener("DOMContentLoaded", () => {
     card.addEventListener("click", () => card.classList.toggle("flipped"));
   });
 
+  /* ---------- Slider Before / After ---------- */
+  const baRange = document.getElementById("baRange");
+  if (baRange) {
+    const baBeforeWrap = document.getElementById("baBeforeWrap");
+    const baHandle = document.getElementById("baHandle");
+    const setBA = (val) => {
+      baBeforeWrap.style.width = val + "%";
+      baHandle.style.left = val + "%";
+    };
+    baRange.addEventListener("input", () => setBA(baRange.value));
+    setBA(baRange.value);
+  }
+
   /* ---------- Toast (notifikasi kecil) ---------- */
   let toastEl = null;
   let toastTimer = null;
