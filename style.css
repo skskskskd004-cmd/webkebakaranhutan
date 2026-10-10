@@ -605,14 +605,16 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   height: 260px;
-  padding: 16px 6px 0;
+  /* ruang atas untuk angka, ruang bawah untuk label tahun */
+  padding: 34px 6px 36px;
   border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 .bar {
   position: relative;
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   height: 0;
   background: linear-gradient(180deg, var(--primary-2), var(--primary));
   border-radius: 8px 8px 0 0;
@@ -623,16 +625,35 @@ h1, h2, h3, h4 {
 .bar.grow { height: var(--val); }
 .bar-val {
   position: absolute;
-  top: -24px;
-  font-size: 0.78rem;
+  bottom: 100%;
+  margin-bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--accent);
+  white-space: nowrap;
+  pointer-events: none;
 }
 .bar-year {
   position: absolute;
-  bottom: -26px;
-  font-size: 0.78rem;
+  top: 100%;
+  margin-top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.76rem;
   color: var(--muted);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+/* Grafik padat (10 batang nasional): perkecil & miringkan label tahun */
+#chartNasional { gap: 6px; }
+#chartNasional .bar-val { font-size: 0.66rem; }
+#chartNasional .bar-year {
+  font-size: 0.7rem;
+  transform: translateX(-50%) rotate(-32deg);
+  transform-origin: top center;
 }
 
 .data-cards {
@@ -910,7 +931,15 @@ h1, h2, h3, h4 {
   .chat-window { height: 280px; }
   .btn { width: 100%; }
   .hero-actions { flex-direction: column; }
-  .chart { height: 200px; gap: 6px; }
+  .chart { height: 210px; gap: 5px; padding: 30px 2px 42px; }
+  .bar-val { font-size: 0.62rem; }
+  .bar-year {
+    font-size: 0.64rem;
+    transform: translateX(-50%) rotate(-40deg);
+    transform-origin: top center;
+  }
+  #chartNasional .bar-val { font-size: 0.55rem; }
+  #chartNasional .bar-year { font-size: 0.6rem; }
   .footer-inner { flex-direction: column; }
 }
 
