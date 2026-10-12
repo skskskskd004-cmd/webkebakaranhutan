@@ -1360,6 +1360,7 @@ h1, h2, h3, h4 {
 .myth-back p {
   font-size: 0.98rem;
   line-height: 1.5;
+  color: #ffffff;
 }
 .myth-tag {
   align-self: center;
