@@ -717,9 +717,10 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   const fallback =
-    "Terima kasih atas pertanyaannya! Untuk topik ini, coba jelajahi bagian " +
-    "Pengertian, Penyebab, Dampak, atau Pencegahan di halaman ini. Kamu juga bisa " +
-    "memilih salah satu pertanyaan cepat di atas kolom ketik.";
+    "Maaf, aku hanya bisa menjawab seputar kebakaran hutan di Kalimantan sesuai " +
+    "materi yang ada di website ini. Pertanyaanmu sepertinya di luar topik itu. " +
+    "Coba tanyakan tentang pengertian, penyebab, dampak, flora & fauna, data, " +
+    "pencegahan, atau penanggulangan kebakaran hutan ya.";
 
   const findAnswer = (q) => {
     const text = q.toLowerCase();
