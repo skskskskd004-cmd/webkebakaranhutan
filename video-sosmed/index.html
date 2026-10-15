@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bijak Bermedia Sosial — Video</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ===== PANGGUNG VIDEO ===== -->
+  <div class="stage" id="stage">
+
+    <!-- Layar awal / tombol putar -->
+    <div class="screen screen-start" id="screenStart">
+      <div class="start-inner">
+        <span class="start-badge">🎬 Video Edukasi</span>
+        <h1 class="start-title">Bijak Bermedia Sosial</h1>
+        <p class="start-sub">Durasi ± 2 menit · dengan narasi suara &amp; musik</p>
+        <button class="play-btn" id="playBtn" aria-label="Putar video">▶ Putar Video</button>
+        <p class="start-note">Pastikan volume perangkat menyala untuk mendengar narasi.</p>
+      </div>
+    </div>
+
+    <!-- ====== ADEGAN-ADEGAN ====== -->
+    <div class="scenes" id="scenes" hidden>
+
+      <!-- OPENING -->
+      <section class="scene scene-opening" data-scene="0">
+        <div class="bg-gradient bg-opening"></div>
+        <div class="floaties" aria-hidden="true">
+          <span>📱</span><span>💬</span><span>❤️</span><span>👍</span><span>🔔</span><span>#️⃣</span>
+        </div>
+        <div class="scene-content">
+          <p class="kicker fade-up">SEBUAH VIDEO EDUKASI</p>
+          <h1 class="big-title fade-up d1">Bijak Bermedia Sosial</h1>
+          <p class="subtitle fade-up d2">Dunia digital ada di genggaman. Yuk, gunakan dengan bijak.</p>
+        </div>
+      </section>
+
+      <!-- INTI 1: Masalah -->
+      <section class="scene scene-point" data-scene="1">
+        <div class="bg-gradient bg-point1"></div>
+        <div class="scene-content">
+          <span class="scene-emoji pop">⚠️</span>
+          <h2 class="point-title fade-up">Kenapa Perlu Bijak?</h2>
+          <p class="point-text fade-up d1">
+            Setiap hari kita membagikan dan membaca ribuan informasi.
+            Sayangnya, tidak semuanya benar dan tidak semua pantas disebar.
+          </p>
+        </div>
+      </section>
+
+      <!-- INTI 2: Tips 1 -->
+      <section class="scene scene-tip" data-scene="2">
+        <div class="bg-gradient bg-point2"></div>
+        <div class="scene-content">
+          <span class="scene-emoji pop">🔍</span>
+          <h2 class="point-title fade-up">1. Saring Sebelum Sharing</h2>
+          <p class="point-text fade-up d1">
+            Periksa kebenaran informasi sebelum membagikannya.
+            Jangan sampai ikut menyebarkan berita bohong atau hoaks.
+          </p>
+        </div>
+      </section>
+
+      <!-- INTI 3: Tips 2 -->
+      <section class="scene scene-tip" data-scene="3">
+        <div class="bg-gradient bg-point3"></div>
+        <div class="scene-content">
+          <span class="scene-emoji pop">🤝</span>
+          <h2 class="point-title fade-up">2. Jaga Sopan Santun</h2>
+          <p class="point-text fade-up d1">
+            Berkomentarlah dengan santun. Hindari ujaran kebencian,
+            perundungan, dan kata-kata yang menyakiti orang lain.
+          </p>
+        </div>
+      </section>
+
+      <!-- INTI 4: Tips 3 -->
+      <section class="scene scene-tip" data-scene="4">
+        <div class="bg-gradient bg-point4"></div>
+        <div class="scene-content">
+          <span class="scene-emoji pop">🔒</span>
+          <h2 class="point-title fade-up">3. Lindungi Data Pribadi</h2>
+          <p class="point-text fade-up d1">
+            Jangan mudah membagikan alamat, nomor telepon, atau data pribadi.
+            Privasimu adalah tanggung jawabmu sendiri.
+          </p>
+        </div>
+      </section>
+
+      <!-- INTI 5: Tips 4 -->
+      <section class="scene scene-tip" data-scene="5">
+        <div class="bg-gradient bg-point5"></div>
+        <div class="scene-content">
+          <span class="scene-emoji pop">⏰</span>
+          <h2 class="point-title fade-up">4. Atur Waktu Layar</h2>
+          <p class="point-text fade-up d1">
+            Gunakan media sosial secukupnya. Jangan sampai lupa belajar,
+            istirahat, dan berinteraksi dengan dunia nyata.
+          </p>
+        </div>
+      </section>
+
+      <!-- CLOSING -->
+      <section class="scene scene-closing" data-scene="6">
+        <div class="bg-gradient bg-closing"></div>
+        <div class="floaties" aria-hidden="true">
+          <span>🌟</span><span>😊</span><span>🤝</span><span>💡</span><span>✨</span><span>👏</span>
+        </div>
+        <div class="scene-content">
+          <span class="scene-emoji pop">🌟</span>
+          <h2 class="big-title fade-up">Jadilah Pengguna yang Bijak</h2>
+          <p class="subtitle fade-up d1">
+            Think before you post. Berpikirlah sebelum mengunggah.
+          </p>
+          <p class="credits fade-up d2">Terima kasih sudah menonton 🙏</p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ====== KONTROL PEMUTAR ====== -->
+    <div class="controls" id="controls" hidden>
+      <button class="ctrl-btn" id="btnReplay" title="Ulang dari awal">↺</button>
+      <button class="ctrl-btn" id="btnPause" title="Jeda / Lanjut">⏸</button>
+      <button class="ctrl-btn" id="btnMute" title="Bisukan / Nyalakan suara">🔊</button>
+      <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      <span class="time-label" id="timeLabel">0:00</span>
+    </div>
+  </div>
+
+  <script src="video.js"></script>
+</body>
+</html>

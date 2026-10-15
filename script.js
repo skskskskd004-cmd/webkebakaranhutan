@@ -448,15 +448,40 @@ document.addEventListener("DOMContentLoaded", () => {
     let current = 0;
     let score = 0;
     let answered = false;
+    let quizSet = []; // set soal yang sedang dikerjakan (teracak)
+
+    // Acak urutan elemen array (algoritma Fisher-Yates) tanpa mengubah array asli
+    const shuffle = (arr) => {
+      const a = arr.slice();
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    };
+
+    // Buat set soal baru: urutan soal diacak DAN pilihan jawaban tiap soal diacak
+    const buildQuizSet = () => {
+      quizSet = shuffle(questions).map((item) => {
+        const correctText = item.options[item.correct];
+        const shuffledOptions = shuffle(item.options);
+        return {
+          q: item.q,
+          options: shuffledOptions,
+          correct: shuffledOptions.indexOf(correctText),
+          explain: item.explain,
+        };
+      });
+    };
 
     const renderQuestion = () => {
       answered = false;
-      const item = questions[current];
+      const item = quizSet[current];
       qQuestion.textContent = item.q;
       qFeedback.hidden = true;
       qNext.hidden = true;
-      qProgressText.textContent = "Soal " + (current + 1) + " dari " + questions.length;
-      qProgressFill.style.width = ((current + 1) / questions.length) * 100 + "%";
+      qProgressText.textContent = "Soal " + (current + 1) + " dari " + quizSet.length;
+      qProgressFill.style.width = ((current + 1) / quizSet.length) * 100 + "%";
 
       qOptions.innerHTML = "";
       item.options.forEach((opt, i) => {
@@ -471,7 +496,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const selectAnswer = (choice, btn) => {
       if (answered) return;
       answered = true;
-      const item = questions[current];
+      const item = quizSet[current];
       const allBtns = qOptions.querySelectorAll(".quiz-option");
       allBtns.forEach((b, i) => {
         b.disabled = true;
@@ -486,16 +511,16 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       qFeedback.hidden = false;
       qNext.hidden = false;
-      qNext.textContent = current < questions.length - 1 ? "Lanjut →" : "Lihat Hasil →";
+      qNext.textContent = current < quizSet.length - 1 ? "Lanjut →" : "Lihat Hasil →";
     };
 
     const showResult = () => {
       quizEl.hidden = true;
       quizResult.hidden = false;
       qResultScore.textContent = score;
-      const persen = (score / questions.length) * 100;
+      const persen = (score / quizSet.length) * 100;
       let emoji, title, msg;
-      if (score === questions.length) {
+      if (score === quizSet.length) {
         emoji = "🏆"; title = "Luar biasa!";
         msg = "Nilai sempurna! Kamu sudah paham betul soal kebakaran hutan.";
       } else if (persen >= 70) {
@@ -514,7 +539,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     qNext.addEventListener("click", () => {
-      if (current < questions.length - 1) {
+      if (current < quizSet.length - 1) {
         current++;
         renderQuestion();
       } else {
@@ -525,11 +550,13 @@ document.addEventListener("DOMContentLoaded", () => {
     qRetry.addEventListener("click", () => {
       current = 0;
       score = 0;
+      buildQuizSet(); // acak ulang soal & pilihan setiap kali kuis diulang
       quizResult.hidden = true;
       quizEl.hidden = false;
       renderQuestion();
     });
 
+    buildQuizSet(); // acak soal saat pertama kali dimuat
     renderQuestion();
   }
 
